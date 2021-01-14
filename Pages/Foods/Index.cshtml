@@ -1,0 +1,57 @@
+﻿@page
+@model proiect2.Pages.Foods.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<body style="background-color: ivory;"></body>
+<h1>Mâncare câini</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<head>
+    <style>
+            p
+        {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Food[0].Denumire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food[0].Pret)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Food[0].PublishingDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Food) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Denumire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pret)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishingDate)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
